@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEXY LADIES BIOSKOP</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#121212;color:white}
+header{background:#1e1e1e;padding:20px;text-align:center}
+.container{max-width:1200px;margin:auto;padding:20px}
+.card{background:#222;padding:15px;border-radius:12px;margin-bottom:15px}
+select,input,button{width:100%;padding:10px;margin-top:8px;border-radius:8px;border:none}
+button{cursor:pointer}
+.poster{width:100%;max-height:300px;object-fit:cover;border-radius:10px}
+.seats{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
+.seat{padding:8px;text-align:center;background:#2ecc71;border-radius:6px;cursor:pointer}
+.seat.selected{background:#f1c40f;color:black}
+.seat.occupied{background:#e74c3c;cursor:not-allowed}
+.ticket{display:none;background:#333;padding:15px;border-radius:10px}
+</style>
+</head>
+<body>
+<header>
+<h1>🎬 BIOSKOP SEXY LADIES</h1>
+</header>
+
+<div class="container">
+<div class="card">
+<h3>Nama Pemesan</h3>
+<input id="nama" placeholder="Masukkan nama">
+</div>
+
+<div class="card">
+<h3>Pilih Film</h3>
+<select id="film">
+<option>A Minecraft Movie</option>
+<option>Lilo & Stitch</option>
+<option>Jurassic World Rebirth</option>
+<option>How to Train Your Dragon</option>
+<option>F1</option>
+<option>Superman</option>
+<option>Mission Impossible</option>
+<option>Fantastic Four</option>
+<option>Avatar Fire and Ash</option>
+<option>Zootopia 2</option>
+<option>Avengers Doomsday</option>
+<option>Spider-Man Brand New Day</option>
+<option>The Odyssey</option>
+<option>Toy Story 5</option>
+<option>Dune Part Three</option>
+<option>The Sex Thirty Two</option>
+<option>The Conquest of Ladies: Rossi Sex lust</option>
+<option>Lilik VS Tri : Chapter I</option>
+<option>Lilik VS Tri : Great Hotel of Ladies Companion</option>
+<option>Elephant VS Lilik</option>
+<option>The Sex 1 </option>
+<option>The Second Porn Mountain</option>
+<option>Ghost in the Cell</option>
+<option>Sex in restroom</option>
+<option>The Throne of Sex Queen</option>
+<option>Ida Married Pigai</option>
+<option>Death of Syarafina</option>
+<option>City of Dildoh</option>
+<option>Heri Love Tri: Lesbian Love</option>
+</select>
+</div>
+
+<div class="card">
+<h3>Studio</h3>
+<select id="studio">
+<option>Studio ONE SEX</option>
+<option>Studio TWO SEX</option>
+<option>Studio THREE SEX CHUDAI</option>
+<option>Studio FOUR SEX</option>
+<option>Studio FIVE SEX</option>
+<option>Studio SEX 22+</option>
+<option>Studio SEX 22+ (KHUSUS LANSIA)</option>
+<option>IMAX</option>
+<option>4DX</option>
+<option>Dolby Atmos</option>
+</select>
+</div>
+
+<div class="card">
+<h3>Jadwal</h3>
+<select id="jadwal"></select>
+</div>
+
+<div class="card">
+<h3>Kelas Tiket</h3>
+<select id="kelas">
+<option value="35000">Reguler - Rp35.000</option>
+<option value="65000">Premier - Rp65.000</option>
+<option value="175000">Executive - Rp175.000</option>
+<option value="345000">VIP Luxury - Rp345.000</option>
+<option value="980000">Royal Platinum Suite - Rp980.000</option>
+<option value="1200000">SEX Platinum Suite - Rp1.200.000</option>
+</select>
+</div>
+
+<div class="card">
+<h3>🍿 Makanan & Minuman</h3>
+<select id="snack">
+<option value="0">Tidak Ada</option>
+<option value="25000">Popcorn Cheese</option>
+<option value="25000">Popcorn Caramel</option>
+<option value="65000">MIX PLATER</option>
+<option value="15000">Coca Cola</option>
+<option value="15000">Fanta</option>
+<option value="15000">Sprite</option>
+<option value="30000">Hotdog</option>
+<option value="35000">Nachos</option>
+<option value="150000">Alat SEX</option>
+<option value="35000">Kondom SUTRA</option>
+<option value="95000">DILDOUGH</option>
+</select>
+</div>
+
+<div class="card">
+<h3>💺 Pilih Kursi</h3>
+<div class="seats" id="seats"></div>
+</div>
+
+<div class="card">
+<h3>💳 Pembayaran</h3>
+<select id="bayar">
+<option>QRIS</option>
+<option>Dana</option>
+<option>OVO</option>
+<option>GoPay</option>
+<option>ShopeePay</option>
+<option>Transfer Bank</option>
+<option>Bank SEX COMPANION</option>
+</select>
+</div>
+
+<button onclick="pesan()">🎟️ Pesan Tiket</button>
+
+<div class="ticket" id="ticket"></div>
+</div>
+
+<script>
+for(let i=0;i<24;i++){
+let o=document.createElement('option');
+o.text=(i<10?'0':'')+i+':00';
+jadwal.add(o);
+}
+
+let chosen='';
+const rows=['A','B','C','D','E','F','G','H','J','K'];
+rows.forEach(r=>{
+for(let i=1;i<=15;i++){
+let d=document.createElement('div');
+d.className='seat';
+d.innerText=r+i;
+
+if(Math.random()<0.15){
+d.classList.add('occupied');
+}else{
+d.onclick=()=>{
+document.querySelectorAll('.seat').forEach(x=>x.classList.remove('selected'));
+d.classList.add('selected');
+chosen=d.innerText;
+}
+}
+seats.appendChild(d);
+}
+});
+
+function pesan(){
+let total=parseInt(kelas.value)+parseInt(snack.value);
+let kode=+Math.floor(Math.random()*999999);
+ticket.style.display='block';
+ticket.innerHTML=`
+<h2>🎟️ E-TIKET BIOSKOP SEXY LADIES</h2>
+<p>Nama: ${nama.value}</p>
+<p>Film: ${film.value}</p>
+<p>Studio: ${studio.value}</p>
+<p>Jadwal: ${jadwal.value}</p>
+<p>Kursi: ${chosen}</p>
+<p>Pembayaran: ${bayar.value}</p>
+<p>Total: Rp${total.toLocaleString('id-ID')}</p>
+<p>Kode: ${kode}</p>
+<p>QR: Scan kode transaksi ${kode}</p>
+<button onclick="window.print()">🖨️ Cetak Tiket</button>
+`;
+}
+</script>
+</body>
+</html>
